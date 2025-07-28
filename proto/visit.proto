@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package visit;
+
+service VisitService {
+  rpc CreateVisit(CreateVisitRequest) returns (VisitResponse);
+  rpc GetVisit(GetVisitRequest) returns (VisitResponse);
+  rpc GetAllVisits(Empty) returns (VisitsResponse);
+  rpc UpdateVisit(UpdateVisitRequest) returns (UpdateVisitResponse);
+  rpc DeleteVisit(DeleteVisitRequest) returns (DeleteVisitResponse);
+}
+
+// Model
+message Visit {
+  string id = 1;
+  int32 patient_id = 2;
+  string visit_date = 3;
+}
+
+// Requests
+message CreateVisitRequest {
+  int32 patient_id = 1;
+  string visit_date = 2;
+}
+
+message GetVisitRequest {
+  string id = 1;
+}
+
+message UpdateVisitRequest {
+  string id = 1;
+  int32 patient_id = 2;
+  string visit_date = 3;
+}
+
+message DeleteVisitRequest {
+  string id = 1;
+}
+
+// Responses
+message VisitResponse {
+  string message = 1;
+  Visit visit = 2;
+}
+
+message VisitsResponse {
+  string message = 1;
+  repeated Visit visits = 2;
+}
+
+message UpdateVisitResponse {
+  string message = 1;
+}
+
+message DeleteVisitResponse {
+  string message = 1;
+}
+
+// Empty message for methods that take no params
+message Empty {}
