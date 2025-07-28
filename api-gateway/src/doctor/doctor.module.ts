@@ -1,4 +1,3 @@
-// src/doctor/doctor.module.ts
 import { Module } from '@nestjs/common';
 import { DoctorController } from './doctor.controller';
 import { DoctorService } from './doctor.service';
